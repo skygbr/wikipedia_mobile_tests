@@ -45,7 +45,6 @@ htmlcov/
 .nox/
 apps/Wikipedia/
 apps/wikipedia-ios/
-apps/wikipedia.app
 tests/test_utils.py
 *.png
 
