@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv
+env/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Test artifacts
+allure-results/
+allure-report/
+screenshots/
+test-output/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+apps/Wikipedia/
+apps/wikipedia-ios/
+apps/wikipedia.app
+tests/test_utils.py
+*.png
+
+# Logs
+*.log
+logs/
+appium.log
+
+# Mobile testing specific
+*.ipa
+*.apk
+*.app
+*.trace
+*.dSYM.zip
+*.dSYM
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Environment configuration
+.env.local
+.env.*.local
+
+# Debug files
+debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Device specific
+*.keystore
+*.jks
+*.p12
+*.cer
+*.mobileprovision 

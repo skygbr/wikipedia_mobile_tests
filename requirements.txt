@@ -1,0 +1,30 @@
+# Core dependencies
+Appium-Python-Client==3.1.1
+selenium==4.18.1
+pytest==7.4.3
+pytest-html==4.1.1
+pytest-metadata==3.1.1
+allure-pytest==2.13.2
+
+# Environment and configuration
+python-dotenv==1.0.1
+pyyaml==6.0.1
+
+# Testing utilities
+pytest-xdist==3.5.0  # For parallel test execution
+pytest-rerunfailures==12.0  # For retrying failed tests
+pytest-timeout==2.2.0  # For test timeouts
+pytest-sugar==1.0.0  # For better test output
+
+# Logging and reporting
+allure-python-commons==2.13.2
+
+# Mobile testing specific
+Appium-XCUITest-Driver==5.19.0
+Appium-Android-Driver==2.19.0
+
+# Development tools
+black==24.2.0  # Code formatting
+flake8==7.0.0  # Code linting
+mypy==1.8.0  # Type checking
+isort==5.13.2  # Import sorting 
