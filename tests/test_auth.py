@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 from selenium.webdriver.common.by import By
+from utils.driver import Driver
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -22,6 +23,24 @@ INVALID_PASSWORD = "wrong_password"
 @allure.epic("Wikipedia Mobile App")
 @allure.feature("Authentication")
 class TestAuthentication:
+    @allure.story("Test Setup")
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.description("Initialize test environment")
+    def before_test(self):
+        """Initialize test environment before each test"""
+        driver_instance = Driver(platform="ios")
+        driver_instance.driver = self.driver
+        driver_instance.setUp()
+
+    @allure.story("Test Cleanup")
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.description("Clean up test environment")
+    def after_test(self):
+        """Clean up test environment after each test"""
+        driver_instance = Driver(platform="ios")
+        driver_instance.driver = self.driver
+        driver_instance.after_test()
+
     @pytest.fixture(autouse=True)
     def setup(self, driver):
         """
@@ -31,7 +50,12 @@ class TestAuthentication:
         self.auth_page = AuthPage(driver)
         self.logger = logging.getLogger(__name__)
         self.logger.info("Test setup completed")
+        
+        # Initialize test environment
+        self.before_test()
+        
         yield
+        
         self.logger.info("Test cleanup started")
         # Teardown: logout after each test only if logged in
         try:
@@ -175,11 +199,12 @@ class TestAuthentication:
             # Take screenshot for debugging
             self.driver.save_screenshot("empty_credentials.png")
             self.logger.info("Test completed successfully")
-            
         except Exception as e:
             self.logger.error(f"Test failed: {str(e)}")
             self.driver.save_screenshot("empty_credentials_error.png")
             raise
+        finally:
+            self.after_test()
 
     @allure.story("Login Functionality")
     @allure.severity(allure.severity_level.NORMAL)

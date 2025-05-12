@@ -258,6 +258,17 @@ class AuthPage(BasePage):
             
             logging.info("Clicking profile button")
             self._safe_click(self.locators.PROFILE_BUTTON)
+
+            # Handle "Got it" dialog if present after clicking profile button
+            try:
+                got_it_button = WebDriverWait(self.driver, 3).until(
+                    EC.element_to_be_clickable((By.XPATH, '//XCUIElementTypeButton[@name="Got it"]'))
+                )
+                logging.info("Found 'Got it' dialog after profile click, clicking button")
+                got_it_button.click()
+                time.sleep(1)  # Small wait to ensure dialog is closed
+            except TimeoutException:
+                logging.info("No 'Got it' dialog found after profile click")
             
             # Now look for the logout button
             logging.info("Looking for logout button")
